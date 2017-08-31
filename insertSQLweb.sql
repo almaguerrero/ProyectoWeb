@@ -30,3 +30,6 @@ values (1,1);
 /*INSERT para Materias_has_Alumnos*/
 insert into Usuarios_has_Materias (Usuarios_idUsuarios, Materias_idMaterias)
 values (2,1);
+/* INSERT para Materias_has_Alumnos*/
+insert into Materias_has_Alumnos (Materias_idMaterias, Alumnos_idAlumnos, calificacion)
+values (1,1, 80);
