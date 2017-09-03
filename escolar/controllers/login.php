@@ -1,24 +1,11 @@
 <?php
+/* En este script llevamos el control para los usuarios que inician sesion
+ * en el sistema, se realiza una estancia de la base de datos para realizar las consultas 
+ * necesarias*/
+require '../db/LinkDB.php';
 
-class foo_mysqli extends mysqli {
-    public function __construct($host, $user, $password, $database){
-        parent::init();
-        
-        if (!parent::options(MYSQLI_INIT_COMMAND, 'SET AUTOCOMMIT = 0')){
-            die('Fallo la configuracion de MYSQLI_INIT_COMMAND');
-        }
-        if (!parent::options(MYSQLI_OPT_CONNECT_TIMEOUT, 5)) {
-            die('Falló la configuración de MYSQLI_OPT_CONNECT_TIMEOUT');
-        }
-        
-        if (!parent::real_connect($host, $user, $password, $database)) {
-            die('Error de conexión (' . mysqli_connect_errno() . ') '
-                . mysqli_connect_error());
-        }
-    }
-}
+$database = LinkDB::connection();
 
-$database = new foo_mysqli('localhost', 'root', 'martinez', 'mydb');
 
 $query = sprintf("SELECT User FROM Usuarios WHERE User= '".htmlentities($_POST["UserName"]) ."'");
 
@@ -26,56 +13,57 @@ $myusuario = mysqli_query($database, $query);
 $nmyusuario= mysqli_num_rows($myusuario);
 if($nmyusuario==0)
 {
-    $query = sprintf("SELECT user FROM Alumnos WHERE user= '".htmlentities($_POST["UserName"]) ."'");
-    $myAlumno = mysqli_query($database, $query);
+    /* Si no es un usuario de personal se realiza una consulta a la tabla alumnos y obtener
+     * la contraseña usuario y iniciamos las variables de sesión para tener control sobre los alumnos en sesión
+     *  */
+    $queryAlumno = sprintf("SELECT user FROM Alumnos WHERE user= '".htmlentities($_POST["UserName"])."'");
+    $myAlumno = mysqli_query($database, $queryAlumno);
     $nmyAlumno= mysqli_num_rows($myAlumno);
     if($nmyAlumno!=0)
     {
-        $sql =sprintf("SELECT user FROM  Alumnos WHERE user = '".htmlentities($_POST["UserName"])."' AND password = '".htmlentities($_POST["Password"])."'");
-        $myclave = mysqli_query($database, $sql);
-        $nmyclave = mysqli_num_rows($myclave);
-        
-        //Si usuario y clave son correctos
-        if($nmyclave != 0)
+        $queryClaveAlumno =sprintf("SELECT idAlumnos, user, nombre FROM  Alumnos WHERE user = '".htmlentities($_POST["UserName"]).
+            "' AND password = '".htmlentities($_POST["Password"])."'");
+        $claveAlumno = mysqli_query($database, $queryClaveAlumno);
+        $numeroClaveAlumno = mysqli_num_rows($claveAlumno);
+        if($numeroClaveAlumno != 0)
         {
             session_start();
-            //Guardamos dos variables de sesión que nos auxiliará para saber si se está o no "logueado" un usuario
-            $_SESSION["autentica"] = "SIP";
-            $fila = mysqli_fetch_array($myclave);
-            $_SESSION["usuarioactual"] = $fila['Nombre']; //nombre del usuario logueado.
-            header("Location: ../views/inicio.html");
+            $_SESSION["TYPE"]=4;
+            $fila = mysqli_fetch_assoc($claveAlumno);
+            $_SESSION["usuarioActual"] = $fila['nombre']; //nombre del usuario logueado.
+            $_SESSION["ID"]= $fila['idAlumnos'];
+            //print $_SESSION["ID"];
+            header("Location: ../views/inicio.php");
         }
         else
         {
-            print "La contraseña o usuario son incorrectas";
+           header("Location: ../index.html");
         }
     }
     else
     {
-        print ("El usuario no existe");
+       header("Location: ../index.html");
     }
 }
 else {
-    $sql =sprintf("SELECT User FROM  Usuarios WHERE User = '".htmlentities($_POST["UserName"])."' AND password = '".htmlentities($_POST["Password"])."'");
-    $myclave = mysqli_query($database, $sql);
-    $nmyclave = mysqli_num_rows($myclave);
+    /* Se ejecuta cuando existe un usuario de personal
+     * administrativo obtenemos las variables de sesión y contraseña*/
+    
+    $sql =sprintf("SELECT User, nombre FROM  Usuarios WHERE User = '".htmlentities($_POST["UserName"])."' AND password = '".htmlentities($_POST["Password"])."'");
+    $clavePersonal = mysqli_query($database, $sql);
+    $numeroClavePersonal = mysqli_num_rows($clavePersonal);
     
     //Si usuario y clave son correctos
-    if($nmyclave != 0)
+    if($numeroClavePersonal != 0)
     {
         session_start();
-        //Guardamos dos variables de sesión que nos auxiliará para saber si se está o no "logueado" un usuario
-        $_SESSION["autentica"] = "SIP";
-        $fila = mysqli_fetch_array($myclave);
-        $_SESSION["usuarioactual"] = $fila['nombre']; //nombre del usuario logueado.
-        //$query_type_user = sprintf("SELECT tipo_usuario_idtipo_usuario FROM Usuarios WHERE User='" .htmlentities($_POST["UserName"]) ."'");
-        //$type_user = mysqli_query($database, $query_type_user);
-        
-        //$fila = mysqli_fetch_assoc($type_user);
-        
-        //if($fila["tipo_usuario_idtipo_usuario"]==1){
-            header("Location: ../views/inicio.html");
-        //}
+        $fila = mysqli_fetch_assoc($clavePersonal);
+        $_SESSION["usuarioActual"] = $fila['nombre']; //nombre del usuario logueado.
+        $queryTipoUsuario = sprintf("SELECT tipo_usuario_idtipo_usuario FROM Usuarios WHERE User='" .htmlentities($_POST["UserName"]) ."'");
+        $tipoUsuario = mysqli_query($database, $queryTipoUsuario);
+        $rowUsuarioInicio = mysqli_fetch_assoc($tipoUsuario);
+        $_SESSION["TYPE"] = $rowUsuarioInicio["tipo_usuario_idtipo_usuario"];
+        header("Location: ../views/inicio.php");
     }
     
 }
