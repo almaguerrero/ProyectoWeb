@@ -31,7 +31,7 @@ class menu
         elseif ($_SESSION["TYPE"]==1)
         {
             //director
-            echo "<li><a href=\"crudPersonal.php\" class=\"waves-effect waves-light\">Registrar Coordinador</a></li>";
+            echo "<li><a href=\"crudCoordinador.php\" class=\"waves-effect waves-light\">Registrar Coordinador</a></li>";
             echo "<li><a href=# class=\"waves-effect waves-light\">Registrar Profesor</a></li>";
             echo "<li><a href=# class=\"waves-effect waves-light\">Registrar Alumno</a></li>";
             echo "<li><a href=# class=\"waves-effect waves-light\">Reportes</a></li>";
