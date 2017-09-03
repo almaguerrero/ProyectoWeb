@@ -3,8 +3,8 @@ insert into tipo_usuario(idtipo_usuario, Descripcion)
 values (2, 'Cordinador');
 
 /* INSERT para Usuarios*/
-insert into Usuarios (User, password, tipo_usuario_idtipo_usuario, correo, estatus)
-values ('Rodrigo','password', 3, 'rodrigo@school.com', 1);
+insert into Usuarios (User, password, tipo_usuario_idtipo_usuario, correo, estatus, nombre, apellido)
+values ('Rodrigo','password', 3, 'rodrigo@school.com', 1, 'nombre', 'apellido');
 
 /*INSERT para Alumnos*/
 insert into Alumnos(nombre, apellido, correo, user, password, estado)
