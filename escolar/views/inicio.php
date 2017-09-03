@@ -1,5 +1,5 @@
 <?php
-
+require 'menu.php';
 ?>
 <!DOCTYPE html>
 
@@ -83,7 +83,8 @@
                         <a href="#" class="NavLateral-DropDown  waves-effect waves-light"><i class="zmdi zmdi-view-web zmdi-hc-fw"></i> <i class="zmdi zmdi-chevron-down NavLateral-CaretDown"></i> Servicios</a>
                         <ul class="full-width">
                            <?php
-								require 'menu.php';
+								
+								menu::defineMenu();
 								
 							?>
                         </ul>
@@ -107,20 +108,18 @@
   <div class="ContentPage-Nav full-width">
 
             <ul class="full-width">
-
                 <li class="btn-MobileMenu ShowHideMenu"><a href="#" class="tooltipped waves-effect waves-light" data-position="bottom" data-delay="50" data-tooltip="Menu"><i class="zmdi zmdi-more-vert"></i></a></li>
 
                 <li><figure><img src="assets/img/th100BL4HI.jpg" alt="UserImage"></figure></li>
-
                 <li style="padding:0 20px;">
                 <?php 
 					session_start();
 					echo $_SESSION["usuarioActual"];
 				?>
 				</li>
-
+				<li style= "padding:0 20px;"><?php menu::nombrarCargo();?></li>
                 <li><a href="../controllers/exitSession.php" class="tooltipped waves-effect waves-light btn-ExitSystem" data-position="bottom" data-delay="50" data-tooltip="Logout"><i class="zmdi zmdi-power"></i></a></li>
-
+                
             </ul>   
 
         </div>

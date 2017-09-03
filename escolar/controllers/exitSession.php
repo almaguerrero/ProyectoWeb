@@ -1,4 +1,4 @@
 <?php
 session_destroy();
-header("Location: /escolar/index.html");
+header("Location: ../index.html");
 ?>
