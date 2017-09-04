@@ -36,41 +36,4 @@ class MisCalificaciones
         }
     }
 }
-
-class PDF extends FPDF
-{
-    function reporte ()
-    {
-        $pdf = new PDF();
-        $header = array('ID GRUPO', 'GRUPO', 'MATERIA', 'CALIFICACION');
-        
-        $pdf->AddPage();
-        $pdf->SetFont('Arial','',10);
-        $pdf->BasicTable($header,obtenerDatos());
-        $pdf->Output();
-    }
-    function Header()
-    {
-        $this->Image('../views/assets/img/itqnn.jpg',10,8,33);
-        $this->SetFont('Arial', 'B', 16);
-        $this->Cell(80);
-        $this->Cell(30,10,'Calificaciones',0,0,'C');
-        $this->Ln(40);
-    }
-    function BasicTable($header, $data)
-    {
-        // Cabecera
-        foreach($header as $col)
-            $this->Cell(30,7,$col,1);
-            $this->Ln();
-            while ($row = mysqli_fetch_assoc($data))
-            {
-                $this->SetFont('Arial','',10);
-                $this->Cell(30,7,$row["idGrupos"],1);
-                $this->Cell(30,7, $row["Descripcion"],1);
-                $this->Cell(30,7, $row["nombre_materia"],1);
-                $this->Cell(30,7, $row["calificacion"],1);
-            }
-    }
-}
 ?>

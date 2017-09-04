@@ -30,9 +30,10 @@ require '../controllers/misCalificacionesAlumno.php';
 			?>
             </tbody>
          </table>
-
-	   <button type="button" id="btnGenerar" class="btn btn-primary btn-md" >button</button>
        </div>
+        <form action="../controllers/misCalificacionesReporte.php" method="POST">
+            <button type="submit" class="waves-effect waves-teal btn-flat">Imprimir &nbsp; <i class="zmdi zmdi-mail-send"></i></button>
+        </form>
     </div>
   </div>
 </body>
