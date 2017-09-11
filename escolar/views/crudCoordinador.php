@@ -4,6 +4,27 @@
 
 <html>
 <head>
+    <meta charset="UTF-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <title>Bienvenido</title>
+
+    <!-- boostrap -->
+    <link href="../libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+
+     <!-- Normalize CSS -->
+<link rel="stylesheet" href="css/normalize.css">
+     <!-- Materialize CSS -->
+        <link rel="stylesheet" href="css/materialize.min.css">
+     <!-- Material Design Iconic Font CSS -->
+        <link rel="stylesheet" href="css/material-design-iconic-font.min.css">
+    <!-- Malihu jQuery custom content scroller CSS -->
+        <link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
+    <!-- Sweet Alert CSS -->
+    <link rel="stylesheet" href="css/sweetalert.css">
+    <!-- MaterialDark CSS -->
+        <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <div class="div_usu">
