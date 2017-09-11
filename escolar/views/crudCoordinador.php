@@ -27,6 +27,33 @@
         <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+     <section class="NavLateral full-width">
+
+        <div class="NavLateral-FontMenu full-width ShowHideMenu"></div>
+
+        <div class="NavLateral-content full-width">
+
+            <header class="NavLateral-title full-width center-align">
+
+                TecNM <i class="zmdi zmdi-close NavLateral-title-btn ShowHideMenu"></i>
+
+            </header>
+
+            <figure class="full-width NavLateral-logo">
+
+                <img src="assets/img/itqnn.jpg" alt="material-logo" class="responsive-img center-box">
+
+                <figcaption class="center-align">Instituto Tecnológico de Querétaro</figcaption>
+
+            </figure> 
+    </section>
+
+    <section class="ContentPage full-width">
+  <div class="ContentPage-Nav full-width">
+        </div>  
+        <div class="NavLateralDivider"></div>
+            <div class="footer-copyright">
+                <div class="container center-align">
 <div class="div_usu">
     <form id="formulario" class="form-horizontal" role="form" >
         <div id="alerta" class="alert alert-danger" role="alert"></div>
