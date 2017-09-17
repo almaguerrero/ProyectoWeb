@@ -10,13 +10,26 @@ class menu
         if($_SESSION["TYPE"]==4)
         {
             //alumno
+            echo "<li>
+                        <a href=\"#\" class=\"NavLateral-DropDown  waves-effect waves-light\"><i class=\"zmdi zmdi-view-web zmdi-hc-fw\">
+                        </i> <i class=\"zmdi zmdi-chevron-down NavLateral-CaretDown\"></i> Servicios</a>
+                        <ul class=\"full-width\">";
             echo "<li><a href=\"Calificaciones.php\" class=\"waves-effect waves-light\">Mis Calificaciones</a></li>";
+            echo "</ul></li>";
+            echo "<li><a href=\"perfilAlumno.php\"><i class=\"zmdi zmdi-view-web zmdi-hc-fw\">
+                        </i> Perfil</a></li>";
         }
         elseif ($_SESSION["TYPE"]==3)
         {
             //profesor
-            echo "<li><a href=# class=\"waves-effect waves-light\">Mis Grupos</a></li>";
-            echo "<li><a href=\"../controllers/ReporteAlumnos.php\" class=\"waves-effect waves-light\">Mis Alumnos</a></li>";
+            echo "<li><a href=\"perfilAlumno.php\"><i class=\"zmdi zmdi-view-web zmdi-hc-fw\">
+                 </i> Perfil</a></li>";
+            echo "<li><a href=\"#\" class=\"NavLateral-DropDown  waves-effect waves-light\"><i class=\"zmdi zmdi-view-web zmdi-hc-fw\">
+                        </i> <i class=\"zmdi zmdi-chevron-down NavLateral-CaretDown\"></i> Servicios</a><ul class=\"full-width\">";
+            
+            echo "<li><a href=\"MisAlumnosProfesor.php\" class=\"waves-effect waves-light\">Mis Materias</a></li>";
+            echo "<li><a href=\"MisAlumnosProfesor.php\" class=\"waves-effect waves-light\">Mis Alumnos</a></li>";
+            echo "</ul></li>";
             
         }
         elseif ($_SESSION["TYPE"]==2)
@@ -33,7 +46,7 @@ class menu
             //director
             echo "<li><a href=\"crudCoordinador.php\" class=\"waves-effect waves-light\">Registrar Coordinador</a></li>";
             echo "<li><a href=# class=\"waves-effect waves-light\">Registrar Profesor</a></li>";
-            echo "<li><a href=# class=\"waves-effect waves-light\">Registrar Alumno</a></li>";
+            echo "<li><a href=\"crudAlumno.php\" class=\"waves-effect waves-light\">Registrar Alumno</a></li>";
             echo "<li><a href=# class=\"waves-effect waves-light\">Reportes</a></li>";
             
         }

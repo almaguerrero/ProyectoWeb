@@ -79,16 +79,12 @@ require 'menu.php';
             <div class="NavLateral-Nav">
 
                 <ul class="full-width">
-                    <li>
-                        <a href="#" class="NavLateral-DropDown  waves-effect waves-light"><i class="zmdi zmdi-view-web zmdi-hc-fw"></i> <i class="zmdi zmdi-chevron-down NavLateral-CaretDown"></i> Servicios</a>
-                        <ul class="full-width">
+                    
                            <?php
 								
 								menu::defineMenu();
 								
 							?>
-                        </ul>
-                    </li>
                 </ul>
 
             </div>  

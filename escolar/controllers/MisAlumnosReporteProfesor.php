@@ -6,7 +6,7 @@ $database = LinkDB::connection();
 $query = sprintf("select a.idAlumnos, a.nombre, a.apellido, g.Descripcion, m.nombre_materia, ma.calificacion
 from Alumnos a, Materias m, Materias_has_Alumnos ma, Grupos g, Grupos_has_Alumnos ga
 where ma.Materias_idMaterias=m.idMaterias AND a.idAlumnos = ma.Alumnos_idAlumnos 
-	AND g.idGrupos = ga.Grupos_idGrupos AND a.idAlumnos = ga.Alumnos_idAlumnos");
+	AND g.idGrupos = ga.Grupos_idGrupos AND a.idAlumnos = ga.Alumnos_idAlumnos AND m.idMaterias=".$_GET["idMaterias"]);
 $qAlumnos=mysqli_query($database, $query);
 
 class PDF extends FPDF 

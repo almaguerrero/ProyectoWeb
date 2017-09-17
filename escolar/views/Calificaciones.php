@@ -31,7 +31,7 @@ require '../controllers/misCalificacionesAlumno.php';
             </tbody>
          </table>
        </div>
-        <form action="../controllers/misCalificacionesReporte.php" method="POST">
+        <form action="../controllers/misCalificacionesReporte.php" target="_Blank" method="POST">
             <button type="submit" class="waves-effect waves-teal btn-flat">Imprimir &nbsp; <i class="zmdi zmdi-mail-send"></i></button>
         </form>
     </div>

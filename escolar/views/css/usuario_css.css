@@ -1,0 +1,12 @@
+.div_usu{
+    position: relative;
+    justify-content:center;
+    top: 10px;
+    left: 35%;
+    width: 30%;
+}
+.div_info{
+    left: 450px;
+    position: absolute;
+    top: 380px;
+}
