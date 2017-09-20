@@ -44,6 +44,16 @@ class menu
         elseif ($_SESSION["TYPE"]==1)
         {
             //director
+            echo "<li><a href=\"perfilAlumno.php\"><i class=\"zmdi zmdi-view-web zmdi-hc-fw\">
+                 </i> Perfil</a></li>";
+            echo "<li><a href=\"#\" class=\"NavLateral-DropDown  waves-effect waves-light\"><i class=\"zmdi zmdi-view-web zmdi-hc-fw\">
+                        </i> <i class=\"zmdi zmdi-chevron-down NavLateral-CaretDown\"></i> Servicios</a><ul class=\"full-width\">";
+            
+            echo "<li><a href=\"MisAlumnosProfesor.php\" class=\"waves-effect waves-light\">Mis Materias</a></li>";
+            echo "<li><a href=\"MisAlumnosProfesor.php\" class=\"waves-effect waves-light\">Mis Alumnos</a></li>";
+            echo "</ul></li>";
+            
+            
             echo "<li><a href=\"crudCoordinador.php\" class=\"waves-effect waves-light\">Registrar Coordinador</a></li>";
             echo "<li><a href=# class=\"waves-effect waves-light\">Registrar Profesor</a></li>";
             echo "<li><a href=\"crudAlumno.php\" class=\"waves-effect waves-light\">Registrar Alumno</a></li>";
