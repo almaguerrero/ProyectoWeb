@@ -49,7 +49,14 @@ require 'menu.php';
     <!-- MaterialDark CSS -->
 
 	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
+	<style>
+	.mySlides {display:none}
+	.w3-left, .w3-right, .w3-badge {cursor:pointer}
+	.w3-badge {height:13px;width:13px;padding:0}
+	</style>
+	
 </head>
 
 <body>
