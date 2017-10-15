@@ -10,6 +10,7 @@ function  obtenerDatos ()
         where ma.Materias_idMaterias=m.idMaterias AND a.idAlumnos = ma.Alumnos_idAlumnos
 	   AND g.idGrupos = ga.Grupos_idGrupos AND a.idAlumnos = ga.Alumnos_idAlumnos AND a.idAlumnos=".htmlentities($_SESSION["ID"]));
     $qAlumnos=mysqli_query($database, $query);
+    $database->close();
     return $qAlumnos;
 }
 
